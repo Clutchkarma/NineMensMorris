@@ -1,22 +1,33 @@
-P1Pieces = 9 #number of pieces in white player's reserve
-P2Pieces = 9 #number of pieces in black player's reserve
+WPieces = 9 #number of pieces in white player's reserve
+BPieces = 9 #number of pieces in black player's reserve
 class Space:
-    def __init__(self, surrounding = [['',0,0],['',0,0],['',0,0],['',0,0]], data = ''):
-        self.data = data # piece currently occupying the space
-        self.surrounding = surrounding #spaces that can be moved to, starting at top then moving clockwise
+    def __init__(self, surrounding = [None,None,None,None], data = ''):
+        self.data = data # piece currently occupying the space; _ default, w or b when occupied
+        self.surrounding = surrounding #spaces that can be moved to, starting at top then moving clockwise (top, right, bottom, left) spaces stored as[int layer, int index 1, int index 2] 3 is used as no space since out of bounds
     def setPiece(self, piece):
         self.data = piece
 
-b1 = [[Space([],'_'),Space([],'_'),Space([],'_')],[Space([],'_'),Space([],'*'),Space([],'_')],[Space([],'_'),Space([],'_'),Space([],'_')]] #innermost board
-b2 = [[Space([],'_'),Space([],'_'),Space([],'_')],[Space([],'_'),Space([],'*'),Space([],'_')],[Space([],'_'),Space([],'_'),Space([],'_')]] #middle board
-b3 = [[Space([],'_'),Space([],'_'),Space([],'_')],[Space([],'_'),Space([],'*'),Space([],'_')],[Space([],'_'),Space([],'_'),Space([],'_')]] #outer board
+board = [[[Space([None,[0,0,1],[0,1,0],None],'_'),Space([[1,0,1],[0,0,2],None,[0,0,1]],'_'),Space([None,None,[0,0,1],[0,1,2]],'_')],
+    [Space([[0,0,0],None,[0,2,0],[2,1,0]],'_'),Space([None,None,None,None],'*'),Space([[0,0,2],[2,1,2],[0,2,2],None],'_')],
+    [Space([[0,1,0],[0,2,1],None,None],'_'),Space([None,[0,2,2],[1,2,1],[0,2,0]],'_'),Space([[0,1,2],None,None,[0,2,1]],'_')]],
+    [[Space([None,[1,0,1],[1,1,0],None],'_'),Space([[2,0,1],[1,0,2],[0,0,1],[1,0,1]],'_'),Space([None,None,[1,0,1],[1,1,2]],'_')],
+    [Space([[1,0,0],[0,1,0],[1,2,0],[2,1,0]],'_'),Space([None,None,None,None],'*'),Space([[1,0,2],[2,1,2],[2,2,2],[1,1,2]],'_')],
+    [Space([[1,1,0],[1,2,1],None,None],'_'),Space([[0,2,1],[1,2,2],[2,2,1],[1,2,0]],'_'),Space([[1,1,2],None,None,[1,2,1]],'_')]],
+    [[Space([None,[2,0,1],[2,1,0],None],'_'),Space([None,[2,0,2],[1,0,1],[2,0,0]],'_'),Space([None,None,[2,1,2],[2,0,1]],'_')],
+    [Space([None,None,None,None],'_'),Space([None,None,None,None],'*'),Space([None,None,None,None],'_')],
+    [Space([None,None,None,None],'_'),Space([None,None,None,None],'_'),Space([None,None,None,None],'_')]]]
 
-print(b3[0][0].data+"     "+b3[0][1].data+"     "+b3[0][2].data+
-    "\n  "+b2[0][0].data+"   "+b2[0][1].data+"   "+b2[0][2].data+
-    "\n    "+b1[0][0].data+" "+b1[0][1].data+" "+b1[0][2].data+
-    "\n"+b3[1][0].data+" "+b2[1][0].data+" "+b1[1][0].data+"   "+b3[1][2].data+" "+b2[1][2].data+" "+b1[1][2].data+
-    "\n    "+b1[2][0].data+" "+b1[2][1].data+" "+b1[2][2].data+
-    "\n  "+b2[2][0].data+"   "+b2[2][1].data+"   "+b2[2][2].data+
-    "\n"+b3[2][0].data+"     "+b3[2][1].data+"     "+b3[2][2].data)
+def printBoard():
+    print(board[2][0][0].data+"     "+board[2][0][1].data+"     "+board[2][0][2].data+
+        "\n  "+board[1][0][0].data+"   "+board[1][0][1].data+"   "+board[1][0][2].data+
+        "\n    "+board[0][0][0].data+" "+board[0][0][1].data+" "+board[0][0][2].data+
+        "\n"+board[2][1][0].data+" "+board[1][1][0].data+" "+board[0][1][0].data+"   "+board[0][1][2].data+" "+board[1][1][2].data+" "+board[2][1][2].data+
+        "\n    "+board[0][2][0].data+" "+board[0][2][1].data+" "+board[0][2][2].data+
+        "\n  "+board[1][2][0].data+"   "+board[1][2][1].data+"   "+board[1][2][2].data+
+        "\n"+board[2][2][0].data+"     "+board[2][2][1].data+"     "+board[2][2][2].data)
 
+def movePiece():
+    return 0
+
+printBoard()
 quit()
