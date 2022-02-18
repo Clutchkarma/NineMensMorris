@@ -1,8 +1,6 @@
-from shutil import move
-
-
 WPieces = 9 #number of pieces in white player's reserve
 BPieces = 9 #number of pieces in black player's reserve
+curPlayer = 'w'
 class Space:
     def __init__(self, surrounding = [None,None,None,None], data = ''):
         self.data = data # piece currently occupying the space; _ default, w or b when occupied
@@ -33,26 +31,57 @@ def printBoard():
         "\n|   "+board[1][2][0].data+"   "+board[1][2][1].data+"   "+board[1][2][2].data+"   |"+
         "\n| "+board[2][2][0].data+"     "+board[2][2][1].data+"     "+board[2][2][2].data+" |\n")
 
-def jumpPiece():
-    return 0
-
-def placePiece():
-    return 0
-
-def movePiece():
+def jumpPiece(player = curPlayer):
     loc = [3,0,0]
-    pos = [3,0,0]
     curLoc = None
-    pos = ''
+    pos = [3,0,0]
     while True:
+        printBoard()
         loc[0] = int(input("Enter Layer: "))
         loc[1] = int(input("Enter y coordinate: "))
         loc[2] = int(input("Enter x coordinate: "))
-        if ((loc[0] >= 0 or loc[0] <= 2) and (loc[1] >= 0 or loc[1] <= 2) and (loc[2] >= 0 or loc[2] <= 2)) and (board[loc[0]][loc[1]][loc[2]].getPiece() == 'w' or board[loc[0]][loc[1]][loc[2]].getPiece() == 'b'):
+        if loc[0] >= 0 and loc[0] <= 2 and loc[1] >= 0 and loc[1] <= 2 and loc[2] >= 0 and loc[2] <= 2 and board[loc[0]][loc[1]][loc[2]].getPiece() == player:
             curLoc = board[loc[0]][loc[1]][loc[2]]
             break
         print("Please pick a valid location")
 
+    while True:
+        pos[0] = int(input("Enter Layer: "))
+        pos[1] = int(input("Enter y coordinate: "))
+        pos[2] = int(input("Enter x coordinate: "))
+        if pos[0] >= 0 and pos[0] <= 2 and pos[1] >= 0 and pos[1] <= 2 and pos[2] >= 0 and pos[2] <= 2:
+            board[pos[0]][pos[1]][pos[2]].setPiece(player)
+            curLoc.setPiece('_')
+            break
+        print("Please pick a valid location")
+    printBoard()
+
+def placePiece(player = curPlayer):
+    loc = [3,0,0]
+    while True:
+        printBoard()
+        loc[0] = int(input("Enter Layer: "))
+        loc[1] = int(input("Enter y coordinate: "))
+        loc[2] = int(input("Enter x coordinate: "))
+        if loc[0] >= 0 and loc[0] <= 2 and loc[1] >= 0 and loc[1] <= 2 and loc[2] >= 0 and loc[2] <= 2 and board[loc[0]][loc[1]][loc[2]].getPiece() == '_':
+            board[loc[0]][loc[1]][loc[2]].setPiece(player)
+            break
+        print("Please pick a valid location")
+    printBoard()
+
+def movePiece(player = curPlayer):
+    loc = [3,0,0]
+    curLoc = None
+    pos = ''
+    while True:
+        printBoard()
+        loc[0] = int(input("Enter Layer: "))
+        loc[1] = int(input("Enter y coordinate: "))
+        loc[2] = int(input("Enter x coordinate: "))
+        if ((loc[0] >= 0 and loc[0] <= 2) and (loc[1] >= 0 and loc[1] <= 2) and (loc[2] >= 0 and loc[2] <= 2)) and (board[loc[0]][loc[1]][loc[2]].getPiece() == player):
+            curLoc = board[loc[0]][loc[1]][loc[2]]
+            break
+        print("Please pick a valid location")
 
     while True:
         pos = input("Pick piece movement direction, w,a,s,d: ")
@@ -77,9 +106,8 @@ def movePiece():
                 curLoc.setPiece('_')
                 break
         print("Invalid move")
+    printBoard()
 
-board[0][0][0].setPiece('b')
-printBoard()
-movePiece()
-printBoard()
+board[0][0][0].setPiece(curPlayer)
+jumpPiece()
 quit()
