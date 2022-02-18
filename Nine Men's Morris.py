@@ -14,8 +14,8 @@ board = [[[Space([None,[0,0,1],[0,1,0],None],'_'),Space([[1,0,1],[0,0,2],None,[0
     [Space([[1,0,0],[0,1,0],[1,2,0],[2,1,0]],'_'),Space([None,None,None,None],'*'),Space([[1,0,2],[2,1,2],[2,2,2],[1,1,2]],'_')],
     [Space([[1,1,0],[1,2,1],None,None],'_'),Space([[0,2,1],[1,2,2],[2,2,1],[1,2,0]],'_'),Space([[1,1,2],None,None,[1,2,1]],'_')]],
     [[Space([None,[2,0,1],[2,1,0],None],'_'),Space([None,[2,0,2],[1,0,1],[2,0,0]],'_'),Space([None,None,[2,1,2],[2,0,1]],'_')],
-    [Space([None,None,None,None],'_'),Space([None,None,None,None],'*'),Space([None,None,None,None],'_')],
-    [Space([None,None,None,None],'_'),Space([None,None,None,None],'_'),Space([None,None,None,None],'_')]]]
+    [Space([[2,0,0],[1,1,0],[2,2,0],None],'_'),Space([None,None,None,None],'*'),Space([[2,0,2],None,[2,2,2],[1,1,2]],'_')],
+    [Space([[2,1,0],[2,2,1],None,None],'_'),Space([[1,2,1],[2,2,2],None,[2,2,0]],'_'),Space([[2,1,2],None,None,2,2,1],'_')]]]
 
 def printBoard():
     print(board[2][0][0].data+"     "+board[2][0][1].data+"     "+board[2][0][2].data+
