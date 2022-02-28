@@ -5,10 +5,10 @@ Nine Men's Morris is an ancient game that can be traced back to the Roman empire
 
 this version is designed to be played from the command line or the python shell.
 
-o-----o-----o
-| o---o---o |
-| | o-o-o | |
-o-o-o   o-o-o
-| | o-o-o | |
-| o---o---o |
-o-----o-----o
+  o-----o-----o
+  | o---o---o |
+  | | o-o-o | |
+  o-o-o   o-o-o
+  | | o-o-o | |
+  | o---o---o |
+  o-----o-----o
