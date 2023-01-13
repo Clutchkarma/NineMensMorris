@@ -4,7 +4,7 @@
 #surrounding: array of all spaces connected to this one, starting upward at index 0 and moving clockwise, (up, right, down, left)
 from hashlib import new
 from mimetypes import init
-
+from tkinter import *
 
 class Space:
     def __init__(self, surrounding = [None,None,None,None], data = ''):
@@ -17,7 +17,7 @@ class Space:
     def getSurround(self):
         return self.surrounding
 
-class Game:
+class Game():
 
     def __init__(self) -> None:
         self.board = [[[Space([None,[0,0,1],[0,1,0],None],'o'),Space([[1,0,1],[0,0,2],None,[0,0,0]],'o'),Space([None,None,[0,0,1],[0,1,2]],'o')],
@@ -240,5 +240,5 @@ def main():
                 mainGame.jumpPiece(curPlayer)
             curPlayer = 'w'
 
-#if __name__ == "__main__":
-#    main()
+if __name__ == "__main__":
+    main()
