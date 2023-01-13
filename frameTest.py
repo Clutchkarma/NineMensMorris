@@ -34,15 +34,6 @@ class Game(Frame):
         self.board.create_oval(90,140,110,160, fill='white')
         self.board.create_oval(190,140,210,160, fill='white')
 
-        self.board.create_oval(90,90,110,110, fill='white')
-        self.board.create_oval(140,90,160,110, fill='white')
-        self.board.create_oval(190,90,210,110, fill='white')
-        self.board.create_oval(90,190,110,210, fill='white')
-        self.board.create_oval(140,190,160,210, fill='white')
-        self.board.create_oval(190,190,210,210, fill='white')
-        self.board.create_oval(90,140,110,160, fill='white')
-        self.board.create_oval(190,140,210,160, fill='white')
-
         #middle shell spaces
         self.board.create_oval(40,40,60,60, fill='white')
         self.board.create_oval(140,40,160,60, fill='white')
@@ -63,15 +54,17 @@ class Game(Frame):
         self.board.create_oval(2,140,22,160, fill='white')
         self.board.create_oval(280,140,300,160, fill='white')
 
-        self.boardInfo = [[[([None,[0,0,1],[0,1,0],None],self.board.create_oval(5,5,19,19, fill='white',outline='white')),([[1,0,1],[0,0,2],None,[0,0,0]],'o'),([None,None,[0,0,1],[0,1,2]],'o')],
-        [([[0,0,0],None,[0,2,0],[1,1,0]],'o'),([None,None,None,None],' '),([[0,0,2],[1,1,2],[0,2,2],None],'o')],
-        [([[0,1,0],[0,2,1],None,None],'o'),([None,[0,2,2],[1,2,1],[0,2,0]],'o'),([[0,1,2],None,None,[0,2,1]],'o')]],
-        [[([None,[1,0,1],[1,1,0],None],'o'),([[2,0,1],[1,0,2],[0,0,1],[1,0,0]],'o'),([None,None,[1,0,1],[1,1,2]],'o')],
-        [([[1,0,0],[0,1,0],[1,2,0],[2,1,0]],'o'),([None,None,None,None],' '),([[1,0,2],[2,1,2],[1,2,2],[0,1,2]],'o')],
-        [([[1,1,0],[1,2,1],None,None],'o'),([[0,2,1],[1,2,2],[2,2,1],[1,2,0]],'o'),([[1,1,2],None,None,[1,2,1]],'o')]],
-        [[([None,[2,0,1],[2,1,0],None],'o'),([None,[2,0,2],[1,0,1],[2,0,0]],'o'),([None,None,[2,1,2],[2,0,1]],'o')],
-        [([[2,0,0],[1,1,0],[2,2,0],None],'o'),([None,None,None,None],' '),([[2,0,2],None,[2,2,2],[1,1,2]],'o')],
-        [([[2,1,0],[2,2,1],None,None],'o'),([[1,2,1],[2,2,2],None,[2,2,0]],'o'),([[2,1,2],None,None,[2,2,1]],'o')]]]
+        self.boardInfo = [[[([None,[0,0,1],[0,1,0],None],self.board.create_oval(5,5,19,19, outline='', fill='')),([[1,0,1],[0,0,2],None,[0,0,0]],self.board.create_oval(143,5,157,19, outline='', fill='')),([None,None,[0,0,1],[0,1,2]],self.board.create_oval(283,5,297,19, outline='', fill=''))],
+        [([[0,0,0],None,[0,2,0],[1,1,0]],self.board.create_oval(5,143,19,157, outline='', fill='')),([None,None,None,None],None),([[0,0,2],[1,1,2],[0,2,2],None],self.board.create_oval(283,143,297,157, outline='', fill=''))],
+        [([[0,1,0],[0,2,1],None,None],self.board.create_oval(5,283,19,297, outline='', fill='')),([None,[0,2,2],[1,2,1],[0,2,0]],self.board.create_oval(143,283,157,297, outline='', fill='')),([[0,1,2],None,None,[0,2,1]],self.board.create_oval(283,283,297,297, outline='', fill=''))]],
+        [[([None,[1,0,1],[1,1,0],None],self.board.create_oval(43,43,57,57, outline='', fill='')),([[2,0,1],[1,0,2],[0,0,1],[1,0,0]],self.board.create_oval(143,43,157,57, outline='', fill='')),([None,None,[1,0,1],[1,1,2]],self.board.create_oval(243,43,257,57, outline='', fill=''))],
+        [([[1,0,0],[0,1,0],[1,2,0],[2,1,0]],self.board.create_oval(43,143,57,157, outline='', fill='')),([None,None,None,None],None),([[1,0,2],[2,1,2],[1,2,2],[0,1,2]],self.board.create_oval(243,143,257,157, outline='', fill=''))],
+        [([[1,1,0],[1,2,1],None,None],self.board.create_oval(43,243,57,257, outline='', fill='')),([[0,2,1],[1,2,2],[2,2,1],[1,2,0]],self.board.create_oval(143,243,157,257, outline='', fill='')),([[1,1,2],None,None,[1,2,1]],self.board.create_oval(243,243,257,257, outline='', fill=''))]],
+        [[([None,[2,0,1],[2,1,0],None],self.board.create_oval(93,93,107,107, outline='', fill='')),([None,[2,0,2],[1,0,1],[2,0,0]],self.board.create_oval(143,93,157,107, outline='', fill='')),([None,None,[2,1,2],[2,0,1]],self.board.create_oval(193,93,207,107, outline='', fill=''))],
+        [([[2,0,0],[1,1,0],[2,2,0],None],self.board.create_oval(93,143,107,157, outline='', fill='')),([None,None,None,None],None),([[2,0,2],None,[2,2,2],[1,1,2]],self.board.create_oval(193,143,207,157, outline='', fill=''))],
+        [([[2,1,0],[2,2,1],None,None],self.board.create_oval(93,193,107,207, outline='', fill='')),([[1,2,1],[2,2,2],None,[2,2,0]],self.board.create_oval(143,193,157,207, outline='', fill='')),([[2,1,2],None,None,[2,2,1]],self.board.create_oval(193,193,207,207, outline='', fill=''))]]]
+
+
 
         #text output
         self.textOutput = StringVar()
@@ -101,8 +94,7 @@ class Game(Frame):
         self.button_submit = Button( self, text = "Submit")
         self.button_submit.grid(row = 5, column = 1)
 
-        
-
+        self.master.resizable(False, False)
 
 mainGame = Game()
 mainGame.mainloop()
