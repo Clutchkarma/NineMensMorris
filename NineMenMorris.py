@@ -4,6 +4,8 @@
 #surrounding: array of all spaces connected to this one, starting upward at index 0 and moving clockwise, (up, right, down, left)
 from hashlib import new
 from mimetypes import init
+from tkinter import *
+import sys
 
 
 class Space:
@@ -150,13 +152,61 @@ class Game:
         self.printboard()
 
     def placePiece(self,player):
+        num = ''
         loc = [3,0,0]
-        print("Placing piece")
         while True:
+            print("Placing piece")
             self.printboard()
-            loc[0] = int(input("Enter Layer: "))
-            loc[1] = int(input("Enter y coordinate: "))
-            loc[2] = int(input("Enter x coordinate: "))
+
+            while True:
+                num = input("Enter Layer (1-3): ")
+                if num.isnumeric():
+                    num = int(num)
+                    if num >= 1 and num <= 3:
+                        loc[0] = num-1
+                        break
+                    else:
+                        print("Please pick a valid location")
+                        continue
+                elif num.lower() == "quit":
+                    quit()
+                else:
+                    print("Please pick a valid location")
+                    continue
+
+
+            while True:
+                num = input("Enter y coordinate(1-3): ")
+                if num.isnumeric():
+                    num = int(num)
+                    if num >= 1 and num <= 3:
+                        loc[1] = num-1
+                        break
+                    else:
+                        print("Please pick a valid location")
+                        continue
+                elif num.lower() == "quit":
+                    quit()
+                else:
+                    print("Please pick a valid location")
+                    continue
+
+            while True:
+                num = input("Enter x coordinate(1-3): ")
+                if num.isnumeric():
+                    num = int(num)
+                    if num >= 1 and num <= 3:
+                        loc[2] = (int(num)-1)
+                        break
+                    else:
+                        print("Please pick a valid location")
+                        continue
+                elif num.lower() == "quit":
+                    quit()
+                else:
+                    print("Please pick a valid location")
+                    continue
+
             if loc[0] >= 0 and loc[0] <= 2 and loc[1] >= 0 and loc[1] <= 2 and loc[2] >= 0 and loc[2] <= 2 and self.board[loc[0]][loc[1]][loc[2]].getPiece() == 'o':
                 self.board[loc[0]][loc[1]][loc[2]].setPiece(player)
                 break
@@ -240,5 +290,5 @@ def main():
                 mainGame.jumpPiece(curPlayer)
             curPlayer = 'w'
 
-#if __name__ == "__main__":
-#    main()
+if __name__ == '__main__':
+    sys.exit(main())
